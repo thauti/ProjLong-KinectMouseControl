@@ -1,0 +1,36 @@
+* <2017-02-01>
+** Fait:
+   - tenter Kalman mais renoncement
+** À faire
+   - Nettoyer le code
+   - Implanter les filtres Microsoft pour stabiliser les mouvements
+   - Ajout asynchronisme (thread pour la capture du squelette, etc)
+* Ven 16 déc 2016 12:46:09 CET
+** Fait:
+  - calibrage
+** A faire:
+  - implanter Kalman pour améliorer la stabilité
+* <2016-12-2>
+** Fait:
+   - La sourie suive le main
+** A faire:
+   - Utiliser un filtre de Kalman pour ameliorer le movument de la sourie
+   - Calibrage
+* <2016-11-25>
+** Fait:
+   - Panique
+** A faire:
+   - POC
+
+* <2016-10-07>
+** Fait:
+   - Description du projet
+** A faire:
+   - Ecrire un manuel d'utilisateur
+   - Que voulez-vous que votre projet fasse?
+<2016-10-14>
+    A faire:
+    - Comment représenter un mouvement ?
+<2016-11-18>
+    Fait:
+    - Recherche de documentation

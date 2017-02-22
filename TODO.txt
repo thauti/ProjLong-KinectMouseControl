@@ -1,0 +1,6 @@
+I. Revoir le code : manque de souplesse, de stabilite; ameliorations compliquees
+II. Implementation du clic : utilisation de la profondeur ?
+III. Implementation d'un mode d'apprentissage : association mvt/action, reset a une position par defaut
+IV. Implementation de Kalman
+V. Implementation d'une commande pour arreter/reprendre le suivi du tracking
+VI. Implementation de differents modes : browsing "simple", presentation
