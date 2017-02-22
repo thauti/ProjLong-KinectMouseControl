@@ -1,5 +1,7 @@
+#ifndef H_UTILS
 #include "Utils.h"
-
+#define H_UTILS
+#endif
 
 
 Utils::Utils()
