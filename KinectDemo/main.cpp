@@ -30,6 +30,7 @@
 	#include "Calibration.h"
 	#define H_CALIBRATION
 #endif
+#include "Clic.h"
 using namespace std;
 
 void toto(int a)
@@ -63,6 +64,7 @@ int main()
 	status.setCharacterSize(24);
 	Infos * env = new Infos();
 
+	thread *click_t = NULL;
 
 	while (1)
 	{
@@ -98,7 +100,23 @@ int main()
 
 					posX = Utils::kinectXtopercScreen(sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].x, Utils::kinectXtoZero(positions[0][0]), Utils::kinectXtoZero(positions[1][0]))*w;
 					posY = Utils::kinectYtopercScreen(sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].y, Utils::kinectYtoZero(positions[0][1]), Utils::kinectYtoZero(positions[1][1]))*h;
-
+					//cout << sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z << endl;
+					if (positions[0][2] - sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z >0.4)
+					{
+						cout << "Clic ?" << endl;
+						if (click_t == NULL)
+						{
+							click_t = new thread(clicthread);
+							click_t->detach();
+						}
+					}
+					else
+					{
+						if (click_t != NULL)
+						{
+							click_t = NULL;
+						}
+					}
 					SetCursorPos(posX, posY);
 				}
 			}
