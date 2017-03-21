@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\ekrips\projet-long-m1-16-17\kinectdemo\main.cpp(101): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\users\ekrips\projet-long-m1-16-17\kinectdemo\main.cpp(123): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\users\ekrips\projet-long-m1-16-17\kinectdemo\main.cpp(63): warning C4996: 'sf::Text::setColor': a été déclaré déconseillé
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\sfml\graphics\text.hpp(177): note: voir la déclaration de 'sf::Text::setColor'
+c:\users\ekrips\projet-long-m1-16-17\kinectdemo\main.cpp(43): warning C4101: 'curs' : variable locale non référencée
+  KinectDemo.vcxproj -> C:\Users\Ekrips\projet-long-m1-16-17\KinectDemo\Debug\KinectDemo.exe
+  KinectDemo.vcxproj -> C:\Users\Ekrips\projet-long-m1-16-17\KinectDemo\Debug\KinectDemo.pdb (Full PDB)

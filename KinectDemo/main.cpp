@@ -66,6 +66,9 @@ int main()
 
 	thread *click_t = NULL;
 
+	NUI_TRANSFORM_SMOOTH_PARAMETERS defaultParams =
+	{ 0.5f, 0.5f, 0.5f, 0.05f, 0.04f };
+
 	while (1)
 	{
 
@@ -89,7 +92,7 @@ int main()
 		if (!calibrationEncours)
 		{
 			NuiSkeletonGetNextFrame(0, sframe);
-
+			NuiTransformSmooth(sframe, &defaultParams);
 			for (int i = 0; i < 6; i++)
 			{
 				if (sframe->SkeletonData[i].eTrackingState == NUI_SKELETON_TRACKED)
