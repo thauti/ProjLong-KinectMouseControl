@@ -1,3 +1,10 @@
+* <2017-03-08>
+** Fait:
+   - Clic par détection de la main en avant (pour une certaine durée)
+** À faire:
+   - Corriger la détection de clic en n'utilisant pas de thread
+   - Problème de stabilité, filtrage ? Idée : stabiliser la souris et non les mesures ?
+   - Mouvement pour le scroll ? Main tendue et qui se déplace verticalement
 * <2017-02-22>
 ** Fait:
    - Asynchronisme ok
