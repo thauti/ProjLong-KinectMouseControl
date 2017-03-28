@@ -9,11 +9,8 @@
 #include <iostream>
 #include "Clic.h"
 using namespace std;
-void *clicthread()
-{
-	Sleep(3000);
-
-	
+void clicgauche()
+{	
 	cout << "Clic" << endl;
 	cout << "Clic" << endl;
 	cout << "Clic" << endl;
@@ -35,7 +32,30 @@ void *clicthread()
 	SendInput(1,&in, sizeof(in));
 	in.mi.dwFlags = MOUSEEVENTF_LEFTUP;
 	SendInput(1, &in, sizeof(in));
-	Sleep(200);
 
-	return 0;
+};
+void clicdroite()
+{
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+	cout << "Clic" << endl;
+
+	INPUT in;
+	POINT p;
+	GetCursorPos(&p);
+	in.type = INPUT_MOUSE;
+	in.mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
+	in.mi.time = 0;
+	SendInput(1, &in, sizeof(in));
+	in.mi.dwFlags = MOUSEEVENTF_RIGHTUP;
+	SendInput(1, &in, sizeof(in));
+
 };

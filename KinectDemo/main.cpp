@@ -69,6 +69,10 @@ int main()
 	NUI_TRANSFORM_SMOOTH_PARAMETERS defaultParams =
 	{ 0.5f, 0.5f, 0.5f, 0.05f, 0.04f };
 
+	sf::Time* t1 = new sf::Time();
+	sf::Clock* c = new sf::Clock();
+	int lock_opti = 0;
+	int lock_opti2 = 0;
 	while (1)
 	{
 
@@ -104,20 +108,56 @@ int main()
 					posX = Utils::kinectXtopercScreen(sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].x, Utils::kinectXtoZero(positions[0][0]), Utils::kinectXtoZero(positions[1][0]))*w;
 					posY = Utils::kinectYtopercScreen(sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].y, Utils::kinectYtoZero(positions[0][1]), Utils::kinectYtoZero(positions[1][1]))*h;
 					//cout << sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z << endl;
-					if (positions[0][2] - sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z >0.4)
+					if (positions[0][2] - sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z >0.3)
 					{
-						cout << "Clic ?" << endl;
-						if (click_t == NULL)
+						if (lock_opti == 0)
 						{
-							click_t = new thread(clicthread);
-							click_t->detach();
+							lock_opti = 1;
+							c->restart();
+						}
+						else
+						{
+							cout << "Clic ?" << endl;
+							*t1 = c->getElapsedTime();
+							cout << t1->asSeconds() << endl;
+							if (t1->asSeconds() >= 2.f)
+							{
+								clicgauche();
+								c->restart();
+								lock_opti = 0;
+							}
+						}
+						
+					}
+					else if (positions[0][2] - sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_LEFT].z >0.3)
+					{
+						if (lock_opti2 == 0)
+						{
+							lock_opti2 = 1;
+							c->restart();
+						}
+						else
+						{
+							cout << "Clic ?" << endl;
+							*t1 = c->getElapsedTime();
+							cout << t1->asSeconds() << endl;
+							if (t1->asSeconds() >= 2.f)
+							{
+								clicdroite();
+								c->restart();
+								lock_opti2 = 0;
+							}
 						}
 					}
 					else
 					{
-						if (click_t != NULL)
+						if (lock_opti != 0)
 						{
-							click_t = NULL;
+							lock_opti = 0;
+						}
+						if (lock_opti2 != 0)
+						{
+							lock_opti2 = 0;
 						}
 					}
 					SetCursorPos(posX, posY);

@@ -1,2 +1,3 @@
 #pragma once
-void *clicthread();
+void clicgauche();
+void clicdroite();
