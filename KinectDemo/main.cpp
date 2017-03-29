@@ -33,11 +33,6 @@
 #include "Clic.h"
 using namespace std;
 
-void toto(int a)
-{
-	cout << "toto" << endl;
-}
-
 int main()
 {
 	POINT curs;
@@ -67,15 +62,10 @@ int main()
 	thread *click_t = NULL;
 
 	NUI_TRANSFORM_SMOOTH_PARAMETERS defaultParams =
-	{ 0.5f, 0.5f, 0.5f, 0.05f, 0.04f };
-
-	sf::Time* t1 = new sf::Time();
-	sf::Clock* c = new sf::Clock();
-	int lock_opti = 0;
-	int lock_opti2 = 0;
-	while (1)
-	{
-
+	//{ 0.9f, 0.1f, 1.0f, 1.0f, 1.0f };
+	{ 1.0f, 0.1f, 1.0f, 1.0f, 1.0f }; //VERY SMOOTH
+	//{ 0.8f, 0.3f, 0.3f, 0.03f, 0.03f };
+	//{ 0.5f, 0.5f, 0.5f, 0.05f, 0.04f }; DEFAULT
 
 		if (env->getCalibration() == false && calibrationEncours == false) {
 			cout << "Début de la calibration" << endl;
