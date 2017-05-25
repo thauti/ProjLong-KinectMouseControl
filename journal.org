@@ -1,3 +1,9 @@
+* <2017-03-29>
+** Fait:
+   - Stabilité, clic gauche et droit
+** À faire:
+   - Ergonomie (trouver des meilleurs gestes pour les clics)
+   - Réfléchir à la captation des "press" et "release"
 * <2017-03-08>
 ** Fait:
    - Clic par détection de la main en avant (pour une certaine durée)

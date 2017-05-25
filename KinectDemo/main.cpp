@@ -68,7 +68,7 @@ int main()
 	thread *click_t = NULL;
 
 	NUI_TRANSFORM_SMOOTH_PARAMETERS defaultParams =
-	{ 0.5f, 0.5f, 0.5f, 0.05f, 0.04f };
+	{ 1.0f, 0.1f, 1.0f, 1.0f, 1.0f };
 
 	sf::Time* t1 = new sf::Time();
 	sf::Clock* c = new sf::Clock();
@@ -115,17 +115,14 @@ int main()
 							if (lock_opti == 0)
 							{
 								lock_opti = 1;
-								cout << "Boucle ?" << endl;
 
 								c->restart();
 							}
 							else
 							{
-								cout << "Boucle2 ?" << endl;
 
-								cout << "Clic ?" << endl;
 								*t1 = c->getElapsedTime();
-								cout << t1->asSeconds() << endl;
+							///	cout << t1->asSeconds() << endl;
 								if (t1->asSeconds() >= 2.f)
 								{
 									clicgauche();
@@ -138,8 +135,8 @@ int main()
 						else
 						{
 							*t1 = c->getElapsedTime();
-							cout << t1->asSeconds() << endl;
-							if (t1->asSeconds() >= 2.f)
+						//	cout << t1->asSeconds() << endl;
+							if (t1->asSeconds() >= 3.f)
 							{
 								clicgauche_grab();
 								c->restart();
