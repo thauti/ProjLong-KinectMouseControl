@@ -31,6 +31,7 @@
 	#define H_CALIBRATION
 #endif
 #include "Clic.h"
+
 using namespace std;
 
 void toto(int a)
@@ -73,6 +74,7 @@ int main()
 	sf::Clock* c = new sf::Clock();
 	int lock_opti = 0;
 	int lock_opti2 = 0;
+	int clicprolonge = 0;
 	while (1)
 	{
 
@@ -107,24 +109,42 @@ int main()
 
 					posX = Utils::kinectXtopercScreen(sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].x, Utils::kinectXtoZero(positions[0][0]), Utils::kinectXtoZero(positions[1][0]))*w;
 					posY = Utils::kinectYtopercScreen(sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].y, Utils::kinectYtoZero(positions[0][1]), Utils::kinectYtoZero(positions[1][1]))*h;
-					//cout << sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z << endl;
 					if (positions[0][2] - sframe->SkeletonData[i].SkeletonPositions[NUI_SKELETON_POSITION_HAND_RIGHT].z >0.3)
 					{
-						if (lock_opti == 0)
-						{
-							lock_opti = 1;
-							c->restart();
+						if (clicprolonge != 1) {
+							if (lock_opti == 0)
+							{
+								lock_opti = 1;
+								cout << "Boucle ?" << endl;
+
+								c->restart();
+							}
+							else
+							{
+								cout << "Boucle2 ?" << endl;
+
+								cout << "Clic ?" << endl;
+								*t1 = c->getElapsedTime();
+								cout << t1->asSeconds() << endl;
+								if (t1->asSeconds() >= 2.f)
+								{
+									clicgauche();
+									c->restart();
+									lock_opti = 0;
+									clicprolonge = 1;
+								}
+							}
 						}
 						else
 						{
-							cout << "Clic ?" << endl;
 							*t1 = c->getElapsedTime();
 							cout << t1->asSeconds() << endl;
 							if (t1->asSeconds() >= 2.f)
 							{
-								clicgauche();
+								clicgauche_grab();
 								c->restart();
 								lock_opti = 0;
+								clicprolonge = 1;
 							}
 						}
 						
@@ -151,6 +171,12 @@ int main()
 					}
 					else
 					{
+						if (clicprolonge == 1)
+						{
+							clicgauche_relache();
+							clicprolonge = 0;
+							lock_opti = 0;
+						}
 						if (lock_opti != 0)
 						{
 							lock_opti = 0;
@@ -160,6 +186,7 @@ int main()
 							lock_opti2 = 0;
 						}
 					}
+
 					SetCursorPos(posX, posY);
 				}
 			}
